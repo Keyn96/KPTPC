@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище WholesaleModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Хранилище WholesaleModelContainer">
+    <EntitySet Name="Material" EntityType="Хранилище WholesaleModel.Material" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Operation" EntityType="Хранилище WholesaleModel.Operation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Operation_Material" EntityType="Хранилище WholesaleModel.Operation_Material" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="Хранилище WholesaleModel.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders_Material" EntityType="Хранилище WholesaleModel.Orders_Material" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Membership" EntityType="Хранилище WholesaleModel.webpages_Membership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_OAuthMembership" EntityType="Хранилище WholesaleModel.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_Roles" EntityType="Хранилище WholesaleModel.webpages_Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="webpages_UsersInRoles" EntityType="Хранилище WholesaleModel.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Workers" EntityType="Хранилище WholesaleModel.Workers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="fk_RoleId" Association="Хранилище WholesaleModel.fk_RoleId">
+      <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="fk_UserId" Association="Хранилище WholesaleModel.fk_UserId">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="IdMaterial" Association="Хранилище WholesaleModel.IdMaterial">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="Orders_Material" EntitySet="Orders_Material" />
+    </AssociationSet>
+    <AssociationSet Name="IdMaterialOperation" Association="Хранилище WholesaleModel.IdMaterialOperation">
+      <End Role="Material" EntitySet="Material" />
+      <End Role="Operation_Material" EntitySet="Operation_Material" />
+    </AssociationSet>
+    <AssociationSet Name="IdOperation" Association="Хранилище WholesaleModel.IdOperation">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="Operation_Material" EntitySet="Operation_Material" />
+    </AssociationSet>
+    <AssociationSet Name="IdOrder" Association="Хранилище WholesaleModel.IdOrder">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="Orders_Material" EntitySet="Orders_Material" />
+    </AssociationSet>
+    <AssociationSet Name="idWorker" Association="Хранилище WholesaleModel.idWorker">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="idWorkerOperation" Association="Хранилище WholesaleModel.idWorkerOperation">
+      <End Role="Workers" EntitySet="Workers" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Material">
+    <Key>
+      <PropertyRef Name="IdMaterial" />
+    </Key>
+    <Property Name="IdMaterial" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="weight" Type="int" Nullable="false" />
+    <Property Name="manufacturer" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="cost" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="IdOperation" />
+    </Key>
+    <Property Name="IdOperation" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="numberInvoice" Type="int" Nullable="false" />
+    <Property Name="cost" Type="int" Nullable="false" />
+    <Property Name="idWorker" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operation_Material">
+    <Key>
+      <PropertyRef Name="IdOperation" />
+      <PropertyRef Name="IdMaterial" />
+    </Key>
+    <Property Name="IdOperation" Type="int" Nullable="false" />
+    <Property Name="IdMaterial" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+    </Key>
+    <Property Name="IdOrder" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dataCreate" Type="date" Nullable="false" />
+    <Property Name="status" Type="nchar" Nullable="false" MaxLength="20" />
+    <Property Name="idWorker" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Orders_Material">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+      <PropertyRef Name="IdMaterial" />
+    </Key>
+    <Property Name="IdOrder" Type="int" Nullable="false" />
+    <Property Name="IdMaterial" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="LastPasswordFailureDate" Type="datetime" />
+    <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordChangedDate" Type="datetime" />
+    <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+    <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="webpages_OAuthMembership">
+    <Key>
+      <PropertyRef Name="Provider" />
+      <PropertyRef Name="ProviderUserId" />
+    </Key>
+    <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webpages_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="webpages_UsersInRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="IdWorker" />
+    </Key>
+    <Property Name="IdWorker" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="fio" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="workExp" Type="int" Nullable="false" />
+    <Property Name="salary" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_RoleId">
+    <End Role="webpages_Roles" Type="Хранилище WholesaleModel.webpages_Roles" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Хранилище WholesaleModel.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webpages_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_UserId">
+    <End Role="Workers" Type="Хранилище WholesaleModel.Workers" Multiplicity="1" />
+    <End Role="webpages_UsersInRoles" Type="Хранилище WholesaleModel.webpages_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="IdWorker" />
+      </Principal>
+      <Dependent Role="webpages_UsersInRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IdMaterial">
+    <End Role="Material" Type="Хранилище WholesaleModel.Material" Multiplicity="1" />
+    <End Role="Orders_Material" Type="Хранилище WholesaleModel.Orders_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="IdMaterial" />
+      </Principal>
+      <Dependent Role="Orders_Material">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IdMaterialOperation">
+    <End Role="Material" Type="Хранилище WholesaleModel.Material" Multiplicity="1" />
+    <End Role="Operation_Material" Type="Хранилище WholesaleModel.Operation_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="IdMaterial" />
+      </Principal>
+      <Dependent Role="Operation_Material">
+        <PropertyRef Name="IdMaterial" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IdOperation">
+    <End Role="Operation" Type="Хранилище WholesaleModel.Operation" Multiplicity="1" />
+    <End Role="Operation_Material" Type="Хранилище WholesaleModel.Operation_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="IdOperation" />
+      </Principal>
+      <Dependent Role="Operation_Material">
+        <PropertyRef Name="IdOperation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IdOrder">
+    <End Role="Orders" Type="Хранилище WholesaleModel.Orders" Multiplicity="1" />
+    <End Role="Orders_Material" Type="Хранилище WholesaleModel.Orders_Material" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="Orders_Material">
+        <PropertyRef Name="IdOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idWorker">
+    <End Role="Workers" Type="Хранилище WholesaleModel.Workers" Multiplicity="1" />
+    <End Role="Orders" Type="Хранилище WholesaleModel.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="IdWorker" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="idWorker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="idWorkerOperation">
+    <End Role="Workers" Type="Хранилище WholesaleModel.Workers" Multiplicity="1" />
+    <End Role="Operation" Type="Хранилище WholesaleModel.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Workers">
+        <PropertyRef Name="IdWorker" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="idWorker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

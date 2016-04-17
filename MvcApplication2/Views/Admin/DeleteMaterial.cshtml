@@ -1,0 +1,61 @@
+﻿@model MvcApplication2.Models.Material
+
+@{
+    ViewBag.Title = "Delete material";
+}
+
+<h2>DeleteMaterial</h2>
+
+<h3>Do you want to remove material?</h3>
+<fieldset>
+    <legend>Material</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdMaterial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdMaterial)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.weight)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.weight)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.manufacturer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.manufacturer)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+    @Html.ActionLink("Back to list", "SelectMaterial")
+    </p>
+}

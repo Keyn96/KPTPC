@@ -1,0 +1,67 @@
+﻿@model MvcApplication2.Models.Orders
+
+@{
+    ViewBag.Title = "Edit Order";
+}
+
+<h2>EditOrder</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Orders</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdOrder)
+        </div>
+        <div class="editor-field">
+            @Model.IdOrder
+           @Html.HiddenFor(model => model.IdOrder)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dataCreate)
+        </div>
+        <div class="editor-field">
+            @Model.dataCreate
+            @Html.HiddenFor(model => model.dataCreate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.status)
+        </div>
+        <div class="editor-field">
+          Like this status now - @Model.status
+            <br />
+            <select name="status" size="1">
+                <option disabled>Select status</option>
+                <option selected="selected" value="Не просмотрен">Не просмотрен</option>
+                <option value="Просмотрен">Просмотрен, решение не принято</option>
+                <option value="Утвержден">Утвержден</option>
+                <option value="Не утвержден">Не утвержден</option>
+            </select>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idWorker)
+        </div>
+        <div class="editor-field">
+            @Model.idWorker
+            @Html.HiddenFor(model => model.idWorker)
+        </div>
+
+        <p>
+            <input type="submit" value="Save changes" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to list", "SelectOrders")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

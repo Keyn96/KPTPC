@@ -1,0 +1,50 @@
+﻿@model MvcApplication2.Models.Workers
+
+@{
+    ViewBag.Title = "Information about the worker";
+}
+
+<h2>DetailsWorker</h2>
+
+<fieldset>
+    <legend>Workers</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdWorker)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdWorker)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.login)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.login)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.workExp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.workExp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.salary)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.salary)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditWorker", new {  IdWorker=Model.IdWorker}) |
+    @Html.ActionLink("Back to list", "SelectWorker")
+</p>

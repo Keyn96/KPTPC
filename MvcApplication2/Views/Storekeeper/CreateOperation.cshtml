@@ -1,0 +1,77 @@
+﻿@using MvcApplication2.Models
+@model MvcApplication2.Models.Operation
+
+@{
+    ViewBag.Title = "CreateOperation";
+}
+
+<h2>CreateOperation</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Operation</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdOperation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IdOperation)
+            @Html.ValidationMessageFor(model => model.IdOperation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.type)
+            @Html.ValidationMessageFor(model => model.type)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.numberInvoice)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.numberInvoice)
+            @Html.ValidationMessageFor(model => model.numberInvoice)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cost)
+            @Html.ValidationMessageFor(model => model.cost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idWorker)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.idWorker)
+            @Html.ValidationMessageFor(model => model.idWorker)
+        </div>
+        <div class="editor-label"><b>Material</b></div>
+        @{
+    List<Material> material = ViewBag.Material;
+    foreach (Material c in material)
+            {
+                <input type="checkbox" name="ma" value="@c.IdMaterial"
+               @(Model.Material.Contains(c) ? "checked=\"checked\"" : "") />@c.name    @c.manufacturer<br />
+            }
+        }
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to list", "SelectMaterial")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,68 @@
+﻿@model MvcApplication2.Models.Material
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>EditMaterial</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Material</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.weight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.weight)
+            @Html.ValidationMessageFor(model => model.weight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.manufacturer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.manufacturer)
+            @Html.ValidationMessageFor(model => model.manufacturer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cost)
+            @Html.ValidationMessageFor(model => model.cost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.quantity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.quantity)
+            @Html.ValidationMessageFor(model => model.quantity)
+        </div>
+
+        <p>
+            <input type="submit" value="Save changes" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to list", "SelectMaterial")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

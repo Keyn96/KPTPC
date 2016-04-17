@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MvcApplication2.Models.Workers>
+
+@{
+    ViewBag.Title = "SelectWorker";
+}
+
+<h2>SelectWorker</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdWorker)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fio)
+        </th>
+     @*   <th>
+            @Html.DisplayNameFor(model => model.workExp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salary)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(model => item.IdWorker)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fio)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.workExp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salary)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "EditWorker", new { IdWorker=item.IdWorker }) |
+            @Html.ActionLink("Details", "DetailsWorker", new { IdWorker=item.IdWorker }) |
+            @Html.ActionLink("Delete", "DeleteWorker", new { IdWorker=item.IdWorker })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.ActionLink("Back", "Index")

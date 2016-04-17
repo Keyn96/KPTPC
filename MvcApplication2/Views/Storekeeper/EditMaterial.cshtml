@@ -1,0 +1,77 @@
+﻿@model MvcApplication2.Models.Material
+
+@{
+    ViewBag.Title = "Edit Material";
+}
+
+<h2>EditMaterial</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Material</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdMaterial)
+        </div>
+        <div class="editor-field">
+            @Model.IdMaterial
+           @Html.HiddenFor(model => model.IdMaterial)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+           @Model.name
+           @Html.HiddenFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.weight)
+        </div>
+        <div class="editor-field">
+            @Model.weight
+           @Html.HiddenFor(model => model.weight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.manufacturer)
+        </div>
+        <div class="editor-field">
+            @Model.manufacturer
+           @Html.HiddenFor(model => model.manufacturer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cost)
+        </div>
+        <div class="editor-field">
+            @Model.cost
+           @Html.HiddenFor(model => model.cost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.quantity)
+        </div>
+        <div class="editor-field">
+            Add to the current value of the required number and type the result into this field
+            @Html.EditorFor(model => model.quantity)
+            @Html.ValidationMessageFor(model => model.quantity)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to list", "SelectMaterial")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

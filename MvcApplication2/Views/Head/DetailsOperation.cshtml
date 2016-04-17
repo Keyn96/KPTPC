@@ -1,0 +1,98 @@
+﻿@using MvcApplication2.Models
+@model MvcApplication2.Models.Operation
+
+@{
+    ViewBag.Title = "Information about the Operation";
+}
+
+<h2>DetailsOperation</h2>
+
+<fieldset>
+    <legend>Operation</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdOperation)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdOperation)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.type)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.type)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.numberInvoice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.numberInvoice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.idWorker)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.idWorker)
+    </div>
+        <table>
+    <tr>
+        <th>
+            IdMaterial
+        </th>
+        <th>
+            name
+        </th>
+        <th>
+           weight
+        </th>
+        <th>
+           manufacturer
+        </th>
+        <th>
+            cost
+        </th>
+        <th>
+            quantity
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (Material m in Model.Material)
+{
+    <tr>
+        <td>
+            @m.IdMaterial
+        </td>
+        <td>
+            @m.name
+        </td>
+        <td>
+            @m.weight
+        </td>
+        <td>
+            @m.manufacturer
+        </td>
+        <td>
+            @m.cost
+        </td>
+        <td>
+            @m.quantity
+</td>
+    </tr>
+}
+
+</table>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to list", "SelectOperation")
+</p>

@@ -1,0 +1,5 @@
+DEBUG 2015-12-25 01:43:07,261 17425ms AdminController        Index              c:\Users\ÍÐ\Documents\Visual Studio 2012\Projects\MvcApplication2\MvcApplication2\Controllers\AdminController.cs - Debug Message 1
+DEBUG 2015-12-25 01:43:09,866 20030ms AdminController        SelectWorker       c:\Users\ÍÐ\Documents\Visual Studio 2012\Projects\MvcApplication2\MvcApplication2\Controllers\AdminController.cs - PLINQ
+DEBUG 2015-12-25 01:43:11,941 22105ms AdminController        Index              c:\Users\ÍÐ\Documents\Visual Studio 2012\Projects\MvcApplication2\MvcApplication2\Controllers\AdminController.cs - Debug Message 1
+DEBUG 2015-12-25 01:43:12,861 23025ms AdminController        SelectMaterial     c:\Users\ÍÐ\Documents\Visual Studio 2012\Projects\MvcApplication2\MvcApplication2\Controllers\AdminController.cs - LINQ
+DEBUG 2015-12-25 01:43:14,359 24523ms AdminController        Index              c:\Users\ÍÐ\Documents\Visual Studio 2012\Projects\MvcApplication2\MvcApplication2\Controllers\AdminController.cs - Debug Message 1

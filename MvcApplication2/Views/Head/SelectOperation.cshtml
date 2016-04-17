@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MvcApplication2.Models.Operation>
+
+@{
+    ViewBag.Title = "SelectOperations";
+}
+
+<h2>SelectOperations</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdOperation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numberInvoice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idWorker)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdOperation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numberInvoice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idWorker)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "DetailsOperation", new {  IdOperation=item.IdOperation  })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>

@@ -1,0 +1,57 @@
+﻿@model MvcApplication2.Models.Material
+
+@{
+    ViewBag.Title = "Information about the material";
+}
+
+<h2>DetailsMaterial</h2>
+
+<fieldset>
+    <legend>Material</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IdMaterial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdMaterial)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.weight)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.weight)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.manufacturer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.manufacturer)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.quantity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.quantity)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "EditMaterial", new { IdMaterial=Model.IdMaterial  }) |
+    @Html.ActionLink("Back to list", "SelectMaterial")
+</p>
